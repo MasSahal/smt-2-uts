@@ -16,7 +16,29 @@
                                 alt="">
                         </div>
                         <div class="col-md-8">
+                            @php
+                                $sub_total = $reservasi->jumlah * $reservasi->harga;
+                                $diskon = (2.5 / 100) * $sub_total;
+                                $pajak = (10 / 100) * $sub_total;
+                                $total = $diskon - $pajak + $sub_total;
+                            @endphp
+
                             <table class="table table-borderless w-75">
+                                <tr>
+                                    <th>ID Reservasi</th>
+                                    <td>:</td>
+                                    <td>{{ $reservasi->id_reservasi }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tanggal Reservasi</th>
+                                    <td>:</td>
+                                    <td>{{ $reservasi->tgl_reservasi }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nama Customer</th>
+                                    <td>:</td>
+                                    <td>{{ $reservasi->nm_customer }}</td>
+                                </tr>
                                 <tr>
                                     <th>Kode Kamar</th>
                                     <td>:</td>
@@ -26,6 +48,35 @@
                                     <th>Nomor Kamar</th>
                                     <td>:</td>
                                     <td>{{ $reservasi->no_kamar }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Harga Kamar</th>
+                                    <td>:</td>
+                                    <td>Rp{{ number_format($reservasi->harga) }}/ malam</td>
+                                </tr>
+                                <tr>
+                                    <th>Jumlah</th>
+                                    <td>:</td>
+                                    <td>{{ $reservasi->jumlah }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Diskon</th>
+                                    <td>:</td>
+                                    <td>Rp{{ number_format($diskon) }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Pajak</th>
+                                    <td>:</td>
+                                    <td>Rp{{ number_format($pajak) }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Bayar</th>
+                                    <td>:</td>
+                                    <td>
+
+                                        <span class="text-danger font-weight-bold">Rp{{ number_format($total) }}</span>
+                                        <small>Total = Diskon - Pajak x (Harga kamar x Jumlah)</small>
+                                    </td>
                                 </tr>
                             </table>
                         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\UserController;
@@ -17,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->to('/login');
 });
+Route::get('/home', [AppController::class, 'home'])->name('home');
 
-Route::get('/login', function () {
-    return view('login');
-});
-
+Route::get('login', [AppController::class, 'index'])->name('login')->middleware('guest');
+Route::get('logout', [AppController::class, 'logout'])->name('logout');
+Route::post('login', [AppController::class, 'authenticate']);
 
 Route::resource('user', UserController::class);
 Route::resource('kamar', KamarController::class);

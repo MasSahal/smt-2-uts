@@ -95,4 +95,27 @@
             </div>
         </div>
     </div>
+
+    <table>
+        <tr>
+            <th>Biaya pendaftaran</th>
+            <th>Biaya layanan</th>
+            <th>Harga Obat</th>
+            <th>Potongan</th>
+            <th>Biaya total</th>
+            <th>Uang bayar</th>
+        </tr>
+        <tr>
+            <td colspan="4" align="right">Pajak 11%</td>
+            <td colspan="2"> .. masukin disnin</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="right">Total bayar</td>
+            <td colspan="2">masukin di sini </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="right">Uang Kembali</td>
+            <td colspan="2">masukin di sini </td>
+        </tr>
+    </table>
 @endsection

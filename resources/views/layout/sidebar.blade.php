@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="user-profile">
         <div class="display-avatar animated-avatar">
-            <img class="profile-img img-lg rounded-circle" src="{{ asset('data-asset') }}/images/profile/male/image_1.png"
+            <img class="profile-img img-lg rounded-circle" src="{{ asset('data-asset') }}/images/profile/user.jpg"
                 alt="profile image">
         </div>
         <div class="info-wrapper">

@@ -24,8 +24,9 @@
     <nav class="t-header">
         <div class="t-header-brand-wrapper">
             <a href="index.html">
-                <img class="logo" src="{{ asset('data-asset') }}/images/logo.svg" alt="">
-                <img class="logo-mini" src="{{ asset('data-asset') }}/images/logo_mini.svg" alt="">
+                {{-- <img class="logo" src="{{ asset('data-asset') }}/images/logo.svg" alt="">
+                <img class="logo-mini" src="{{ asset('data-asset') }}/images/logo_mini.svg" alt=""> --}}
+                <h4 class="text-primary">Hotel Pangeran</h4>
             </a>
         </div>
         <div class="t-header-content-wrapper">
@@ -205,10 +206,11 @@
                         </ul>
                     </div>
                     <div class="col-sm-6 text-center text-sm-left mt-3 mt-sm-0">
-                        <small class="text-muted d-block">Copyright © 2019 <a href="http://www.uxcandy.co"
-                                target="_blank">UXCANDY</a>. All rights reserved</small>
-                        <small class="text-gray mt-2">Handcrafted With <i
-                                class="mdi mdi-heart text-danger"></i></small>
+                        <small class="text-muted d-block">Copyright © {{ date('Y') }} <a href="#">Hotel
+                                Pangeran</a>.
+                            All rights reserved</small>
+                        <small class="text-gray mt-2">Handcrafted With <i class="mdi mdi-heart text-danger"></i> -
+                            Sahl 20210120016</small>
                     </div>
                 </div>
             </footer>
