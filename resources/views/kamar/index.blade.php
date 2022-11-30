@@ -67,6 +67,11 @@
                                             <form action="{{ route('kamar.destroy', $r->id_kamar) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
+                                                <a name="" id="" class="btn btn-xs btn-info"
+                                                    href="{{ route('kamar.show', $r->id_kamar) }}" role="button">
+                                                    Detail
+                                                </a>
+                                                |
                                                 <a name="" id="" class="btn btn-xs btn-warning"
                                                     href="{{ route('kamar.edit', $r->id_kamar) }}" role="button">
                                                     Edit

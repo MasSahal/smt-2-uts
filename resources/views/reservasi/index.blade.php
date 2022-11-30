@@ -68,6 +68,11 @@
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
+                                                <a name="" id="" class="btn btn-xs btn-info"
+                                                    href="{{ route('reservasi.show', $r->kd_kamar) }}" role="button">
+                                                    Detail
+                                                </a>
+                                                |
                                                 <a name="" id="" class="btn btn-xs btn-warning"
                                                     href="{{ route('reservasi.edit', $r->id_reservasi) }}" role="button">
                                                     Edit

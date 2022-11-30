@@ -58,9 +58,17 @@ class ReservasiController extends Controller
      * @param  \App\Models\Reservasi  $reservasi
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservasi $reservasi)
+    public function show($kd_kamar)
     {
-        //
+
+        $reservasi = DB::table('tbl_reservasi')
+            ->join('tbl_kamar', 'tbl_reservasi.kd_kamar', '=', 'tbl_kamar.kd_kamar')
+            ->where('tbl_kamar.kd_kamar', '=', $kd_kamar)
+            ->first();
+        // dd($reservasi);
+        if ($reservasi) {
+            return view('reservasi.show', compact('reservasi'));
+        }
     }
 
     /**
