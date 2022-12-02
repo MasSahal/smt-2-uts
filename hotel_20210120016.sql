@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 02, 2022 at 12:40 AM
+-- Generation Time: Dec 02, 2022 at 12:50 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.0.11
 
@@ -167,7 +167,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'admin', 'admin@localhost.com', '2022-11-30 14:59:51', '$2y$10$pQp7Wo7gJyXBQXxYFU/tn.745LN9j5Hdi7OsfsKN8shjMmr5hmG2C', 'byezJkMZ3dBRWhDnHeFOX7zRVMjiJ2nIna3zllInz6pUN8pqH78ruYalokPa', '2022-11-30 14:59:51', '2022-11-30 14:59:51');
+(4, 'admin', 'admin@localhost.com', '2022-12-01 17:50:35', '$2y$10$On8B1BbYZio10J05m26NtO2yoAbB3P2ltCg2KFNIFq3MmmF8WAWne', 'dEKFYd3jnH', '2022-12-01 17:50:35', '2022-12-01 17:50:35'),
+(5, 'sahal', 'sahal@localhost.com', '2022-12-01 17:50:36', '$2y$10$H9AucDMIDOsd50WDmdC3DOA8P.GhJ9ieofMjaXLc6SYfeFY4rMfXi', 'vUm5s9Nz9r', '2022-12-01 17:50:36', '2022-12-01 17:50:36');
 
 --
 -- Indexes for dumped tables
@@ -257,7 +258,7 @@ ALTER TABLE `tbl_reservasi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
