@@ -1,0 +1,45 @@
+
+# Projek UTS Hotel Pangeran - Sahl
+
+
+## Demo
+
+https://app.tersakiti-dev.my.id
+
+repo online
+https://github.com/MasSahal/smt-2-uts
+
+## Manual Instalasi
+
+komposer update
+```bash
+  composer update
+```
+
+Setup nama database
+```bash
+  php artisan db:create hotel_20210120016
+```
+
+migrasi data
+```bash
+  php artisan migrate
+```
+
+isi data user dari seeder
+```bash
+  php artisan db:seed
+```
+
+jalankan program
+```bash
+  php artisan serve
+```
+## Test Akun
+
+email : admin@localhost.com - 
+pass : admin
+
+
+email : sahal@localhost.com -
+pass : sahal
