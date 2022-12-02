@@ -16,7 +16,7 @@
     <!-- Layout style -->
     <link rel="stylesheet" href="{{ asset('data-asset') }}/css/demo_1/style.css">
     <!-- Layout style -->
-    <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
+    <link rel="shortcut icon" href="{{ asset('data-asset') }}/images/favicon.ico" />
 </head>
 
 <body class="header-fixed">

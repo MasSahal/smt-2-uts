@@ -51,10 +51,12 @@
                             <tbody>
                                 @foreach ($reservasi as $i => $r)
                                     @php
+
                                         $sub_total = $r->jumlah * $r->harga;
                                         $diskon = (2.5 / 100) * $sub_total;
                                         $pajak = (10 / 100) * $sub_total;
                                         $jumlah = $diskon - $pajak + $sub_total;
+                                        
                                     @endphp
                                     <tr>
                                         <td>{{ $i += 1 }}</td>
@@ -95,27 +97,4 @@
             </div>
         </div>
     </div>
-
-    <table>
-        <tr>
-            <th>Biaya pendaftaran</th>
-            <th>Biaya layanan</th>
-            <th>Harga Obat</th>
-            <th>Potongan</th>
-            <th>Biaya total</th>
-            <th>Uang bayar</th>
-        </tr>
-        <tr>
-            <td colspan="4" align="right">Pajak 11%</td>
-            <td colspan="2"> .. masukin disnin</td>
-        </tr>
-        <tr>
-            <td colspan="4" align="right">Total bayar</td>
-            <td colspan="2">masukin di sini </td>
-        </tr>
-        <tr>
-            <td colspan="4" align="right">Uang Kembali</td>
-            <td colspan="2">masukin di sini </td>
-        </tr>
-    </table>
 @endsection

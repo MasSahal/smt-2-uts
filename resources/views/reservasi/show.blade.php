@@ -75,7 +75,7 @@
                                     <td>
 
                                         <span class="text-danger font-weight-bold">Rp{{ number_format($total) }}</span>
-                                        <small>Total = Diskon - Pajak x (Harga kamar x Jumlah)</small>
+                                        <small>Total = Diskon - Pajak + (Harga kamar x Jumlah)</small>
                                     </td>
                                 </tr>
                             </table>

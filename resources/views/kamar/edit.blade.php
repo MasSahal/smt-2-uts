@@ -2,8 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-12 py-3">
-            <h4>Tambah Kamar</h4>
-            <p class="text-gray">Tambah data kamar di Hotel Pangeran Cirebon</p>
+            <h4>Update Kamar {{ $kamar->kd_kamar }}</h4>
+            <p class="text-gray">Update data kamar {{ $kamar->kd_kamar }} di Hotel Pangeran Cirebon</p>
         </div>
     </div>
     <div class="row">
@@ -26,19 +26,21 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('kamar.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('kamar.update', $kamar->id_kamar) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="kd_kamar">Kode Kamar</label>
-                                    <input type="text" name="kd_kamar" id="kd_kamar" class="form-control"
-                                        value="K{{ $kd_kamar }}" readonly>
+                                    <input type="text" name="kd_kamar" id="kd_kamar" class="form-control" readonly
+                                        value="{{ $kamar->kd_kamar }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="no_kamar">No Kamar</label>
                                     <input type="number" name="no_kamar" id="no_kamar" class="form-control"
-                                        value="{{ $kd_kamar }}">
+                                        value="{{ $kamar->no_kamar }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="jenis">Pilih Jenis Kamar</label>
@@ -47,25 +49,29 @@
                                             $jenis = ['Standard Room', 'Superior Room', 'Deluxe Room', 'Twin Room', 'Single Room', 'Double Room', 'Family Room', 'Junior Suite', 'Suite Room', 'Presidential Suite', 'Connecting Room', 'Murphy Room', 'Disabled Room', 'Cabana Room', 'Penthouse Room'];
                                         @endphp
                                         @foreach ($jenis as $j)
-                                            <option value="{{ $j }}">{{ $j }}</option>
+                                            <option value="{{ $j }}"
+                                                {{ $kamar->jenis === $j ? 'selected' : '' }}>
+                                                {{ $j }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="fasilitas">Fasilitas Kamar</label>
-                                    <textarea class="form-control" name="fasilitas" id="fasilitas" rows="3" placeholder="Fasilitas kamar ..."></textarea>
+                                    <textarea class="form-control" name="fasilitas" id="fasilitas" rows="3" placeholder="Fasilitas kamar ...">
+                                        {{ $kamar->fasilitas }}
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="harga">Harga</label>
                                     <input type="number" min="1" max="99999999" name="harga" id="harga"
-                                        class="form-control" placeholder="Masukan harga kamar">
+                                        class="form-control" placeholder="Masukan harga kamar" value="{{ $kamar->harga }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="stok">Stok</label>
                                     <input type="number" min="1" max="1000" name="stok" id="stok"
-                                        class="form-control" placeholder="Masukan stok kamar">
+                                        value="{{ $kamar->stok }}" class="form-control" placeholder="Masukan stok kamar">
                                 </div>
                                 <div class="form-group">
                                     <label for="foto_kamar">Foto Kamar</label>
@@ -73,17 +79,18 @@
                                         onclick="img(this)">
                                 </div>
                                 <div class="form-group">
+                                    <img src="{{ url('file/kamar/' . $kamar->foto) }}" class="img-fluid foto"
+                                        alt="" width="250px">
                                 </div>
-                                <img src="#" class="img-fluid foto" alt="" width="250px">
                             </div>
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-md-12 d-flex">
                                 <div class="ms-auto">
                                     <div class="dl">
-                                        <button type="submit" class="btn btn-success has-icon"><i class="mdi mdi-plus"></i>
-                                            Tambah
-                                            Kamar</button>
+                                        <button type="submit" class="btn btn-success has-icon"><i
+                                                class="mdi mdi-content-save"></i>
+                                            Simpan Kamar</button>
                                         <button type="reset" class="btn btn-warning has-icon"><i
                                                 class="mdi mdi-reload"></i>
                                             Reset</button>

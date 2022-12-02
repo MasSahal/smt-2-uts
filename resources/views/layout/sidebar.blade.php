@@ -11,7 +11,7 @@
     <ul class="navigation-menu">
         <li class="nav-category-divider">MAIN</li>
         <li>
-            <a href="index.html">
+            <a href="{{ route('home') }}">
                 <span class="link-title">Dashboard</span>
                 <i class="mdi mdi-gauge link-icon"></i>
             </a>
@@ -22,16 +22,23 @@
                 <i class="mdi mdi-hotel link-icon"></i>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="{{ route('user.index') }}">
                 <span class="link-title">Pelanggan</span>
                 <i class="mdi mdi-account-multiple link-icon"></i>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="{{ route('reservasi.index') }}">
                 <span class="link-title">Reservasi</span>
                 <i class="mdi mdi-account-card-details link-icon"></i>
+            </a>
+        </li>
+        <li class="nav-category-divider">EXT</li>
+        <li>
+            <a href="{{ route('logout') }}">
+                <span class="link-title">Log-out</span>
+                <i class="mdi mdi-exit-to-app link-icon"></i>
             </a>
         </li>
     </ul>

@@ -26,19 +26,21 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('reservasi.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('reservasi.update', $reservasi->id_reservasi) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nm_customer">Nama Customer</label>
                                     <input type="text" name="nm_customer" id="nm_customer" class="form-control"
-                                        value="{{ old('nm_customer') }}">
+                                        value="{{ $reservasi->nm_customer }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="tgl_reservasi">Tanggal Reservasi</label>
                                     <input type="date" name="tgl_reservasi" id="tgl_reservasi" class="form-control"
-                                        value="{{ old('tgl_reservasi') }}">
+                                        value="{{ $reservasi->tgl_reservasi }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -48,7 +50,8 @@
                                     <select class="form-control" name="kd_kamar" id="kd_kamar">
                                         <option selected disabled>- Pilih Kamar -</option>
                                         @foreach ($kamar as $r)
-                                            <option value="{{ $r->kd_kamar }}">
+                                            <option value="{{ $r->kd_kamar }}"
+                                                <?= $reservasi->kd_kamar == $r->kd_kamar ? 'selected' : '' ?>>
                                                 {{ $r->kd_kamar . ' - ' . $r->no_kamar . ' - Harga : ' . $r->harga }}
                                             </option>
                                         @endforeach
@@ -57,7 +60,7 @@
                                 <div class="form-group">
                                     <label for="jumlah">Jumlah</label>
                                     <input type="number" min="1" max="100" name="jumlah" id="jumlah"
-                                        value="{{ old('jumlah') }}" class="form-control">
+                                        value="{{ $reservasi->jumlah }}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -65,9 +68,9 @@
                             <div class="col-md-12 d-flex">
                                 <div class="ms-auto">
                                     <div class="dl">
-                                        <button type="submit" class="btn btn-success has-icon"><i class="mdi mdi-plus"></i>
-                                            Tambah
-                                            Reservasi</button>
+                                        <button type="submit" class="btn btn-success has-icon"><i
+                                                class="mdi mdi-content-save"></i>
+                                            Simpan Reservasi</button>
                                         <button type="reset" class="btn btn-warning has-icon"><i
                                                 class="mdi mdi-reload"></i>
                                             Reset</button>

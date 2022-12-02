@@ -18,7 +18,7 @@ class AppController extends Controller
     public function home()
     {
         $jml_kamar = Kamar::count();
-        $jml_reservasi = Kamar::count();
+        $jml_reservasi = Reservasi::count();
 
         $reservasi = DB::table('tbl_reservasi')
             ->join('tbl_kamar', 'tbl_reservasi.kd_kamar', '=', 'tbl_kamar.kd_kamar')

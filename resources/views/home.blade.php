@@ -1,16 +1,10 @@
     @extends('layout.index')
     @section('content')
         <div class="row">
-            <div class="col-12 py-3">
-                <h4>Dashboard</h4>
-                <p class="text-gray">Welcome aboard, Allen Clerk</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 equel-grid">
+            <div class="col-lg-12 equel-grid py-3">
                 <div class="grid">
                     <div class="grid-body">
-                        <h3 class="display-4">Selamat datang di Sistem Reservasi Hotel Pangeran</h3>
+                        <h3 class="display-4">Selamat Datang di Sistem Reservasi Hotel Pangeran Cirebon</h3>
                         <br>
                         <p class="lead">Sistem reservasi ini merupakan salah satu bentuk digitalisasi pemesanan tiket<br>
                             secara online dan realtime dimanapun kapan pun</p>

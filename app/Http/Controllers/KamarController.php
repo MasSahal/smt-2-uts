@@ -28,13 +28,14 @@ class KamarController extends Controller
     {
         $kamar = Kamar::latest()->first();
         if ($kamar) {
-            $no_kamar = sprintf("%04s", intval($kamar->no_kamar) + 1);
+            $kd = substr($kamar->kd_kamar, 1);
+            $kd_kamar = sprintf("%04s", intval($kd) + 1);
         } else {
-            $no_kamar = "0001";
+            $kd_kamar = "0001";
         }
 
         return view('kamar.create', [
-            'no_kamar' => $no_kamar,
+            'kd_kamar' => $kd_kamar,
         ]);
     }
 
@@ -95,15 +96,7 @@ class KamarController extends Controller
      */
     public function edit(Kamar $kamar)
     {
-        $old = Kamar::latest()->first();
-        if ($old) {
-            $no_kamar = sprintf("%04s", intval($old->no_kamar) + 1);
-        } else {
-            $no_kamar = "0001";
-        }
-
         return view('kamar.edit', [
-            'no_kamar' => $no_kamar,
             'kamar' => $kamar
         ]);
     }
@@ -115,7 +108,7 @@ class KamarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kamar $kamar)
+    public function update(Request $request, Kamar $kamar)
     {
         $this->validate($request, [
             "kd_kamar"      => "required",
@@ -124,31 +117,47 @@ class KamarController extends Controller
             "fasilitas"     => "required",
             "harga"         => "required",
             "stok"          => "required",
-            "foto_kamar"    => "required|image"
         ]);
 
-        $file = $request->file('foto_kamar');
-        $nama_file = time() . "_" . $request->kd_kamar . "." . $file->getClientOriginalExtension();
+        if ($request->hasFile('foto_kamar')) {
 
+            $this->validate($request, [
+                "foto_kamar"    => "required|image"
+            ]);
 
-        if (File::exists(public_path('file/kamar/' . $kamar->foto))) {
-            File::delete('file/kamar/' . $kamar->foto);
+            $file = $request->file('foto_kamar');
+            $nama_file = time() . "_" . $request->kd_kamar . "." . $file->getClientOriginalExtension();
 
-            $file->move('file/kamar', $nama_file);
+            if (File::exists(public_path('file/kamar/' . $kamar->foto))) {
+                File::delete('file/kamar/' . $kamar->foto);
+
+                $file->move('file/kamar', $nama_file);
+            }
+
+            $upd = [
+                "kd_kamar"  =>  $request->kd_kamar,
+                "no_kamar"  =>  $request->no_kamar,
+                "jenis"     =>  $request->jenis,
+                "fasilitas" =>  $request->fasilitas,
+                "harga"     =>  $request->harga,
+                "stok"      =>  $request->stok,
+                'foto'      =>  $nama_file,
+            ];
+        } else {
+            $upd = [
+                "kd_kamar"  =>  $request->kd_kamar,
+                "no_kamar"  =>  $request->no_kamar,
+                "jenis"     =>  $request->jenis,
+                "fasilitas" =>  $request->fasilitas,
+                "harga"     =>  $request->harga,
+                "stok"      =>  $request->stok
+            ];
         }
 
         // move file
 
-        Kamar::create([
-            "kd_kamar"  =>  $request->kd_kamar,
-            "no_kamar"  =>  $request->no_kamar,
-            "jenis"     =>  $request->jenis,
-            "fasilitas" =>  $request->fasilitas,
-            "harga"     =>  $request->harga,
-            "stok"      =>  $request->stok,
-            'foto'      =>  $nama_file,
-        ]);
-        return redirect()->route("kamar.index")->with("success", "Kamar berhasil ditambahkan!");
+        $kamar->update($upd);
+        return redirect()->route("kamar.index")->with("success", "Kamar berhasil diperbarui!");
     }
 
     /**
